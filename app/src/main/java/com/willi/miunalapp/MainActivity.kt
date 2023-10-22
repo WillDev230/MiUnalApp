@@ -1,11 +1,14 @@
 package com.willi.miunalapp
 
 
+import android.content.Context
+import android.content.res.AssetManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Range
 import android.util.Size
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.AnimatedContent
@@ -107,17 +110,13 @@ class MainActivity : ComponentActivity() {
             val width = this.resources.displayMetrics.widthPixels.toFloat()
             val height = this.resources.displayMetrics.heightPixels.toFloat()
             setContent {
-
                 MiUnalAppTheme {
-
-                    // A surface container using the 'background' color from the theme
                     Surface(
                         modifier = Modifier.fillMaxSize(),
                         color = Color(0xff3b0080)
                     ) {
 
-                        principal()
-
+                        principal(this)
 
                     }
                 }
@@ -126,11 +125,9 @@ class MainActivity : ComponentActivity() {
     }
 }
 @OptIn(ExperimentalAnimationApi::class)
-@Preview
 @Composable
-fun principal() {
-
-
+fun principal(context:Context) {
+    val a = JSONReader()
     val buttonColor = remember { mutableStateListOf(Color.White, Color.White, Color.White,Color.White,Color.White) }
     val map=painterResource(id = R.drawable.mapa)
     var list= remember{ mutableStateListOf(map)
@@ -150,6 +147,7 @@ fun principal() {
     val grades by animateFloatAsState(if (visible) 0f else 180f)
    fun CambiarVisibilidad(){
         visible = !visible
+       a.ListaJson(context)
     }
     fun CambiarVisibilidadDeMenu(){
         visibleMenu = !visibleMenu
@@ -261,10 +259,6 @@ fun principal() {
     }
 
 }
-
-
-
-
 
 
 @Composable
