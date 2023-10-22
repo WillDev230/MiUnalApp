@@ -1,30 +1,29 @@
 package com.willi.miunalapp
 
 
+import android.annotation.SuppressLint
 import android.content.Context
-import android.content.res.AssetManager
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.util.Range
-import android.util.Size
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.keyframes
 import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.gestures.calculatePan
 import androidx.compose.foundation.gestures.calculateZoom
 import androidx.compose.foundation.gestures.forEachGesture
-import androidx.compose.foundation.interaction.Interaction
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -37,15 +36,15 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LargeFloatingActionButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -53,60 +52,33 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.graphics.drawscope.DrawScope
+import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.imageResource
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.IntOffset
-import androidx.compose.ui.unit.IntSize
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.toSize
-import java.lang.Math.abs
-import androidx.compose.animation.core.keyframes
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.expandIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.scaleIn
-import androidx.compose.animation.scaleOut
-import androidx.compose.animation.slideInVertically
-import androidx.compose.animation.slideOutVertically
-import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.material3.TextButton
-import androidx.compose.runtime.Composer
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.currentRecomposeScope
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.rememberUpdatedState
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.ui.graphics.ImageBitmapConfig
-import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.graphics.TransformOrigin
-
 import androidx.compose.ui.platform.LocalDensity
-
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
+import androidx.lifecycle.LifecycleCoroutineScope
+import androidx.lifecycle.lifecycleScope
+import com.google.android.gms.common.api.internal.LifecycleActivity
+import com.google.android.gms.location.LocationServices
+import com.willi.miunalapp.ui.theme.GpsCords
 import com.willi.miunalapp.ui.theme.MiUnalAppTheme
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.emptyFlow
-import java.util.logging.Logger.global
-import kotlin.math.roundToInt
+import kotlinx.coroutines.launch
+import java.lang.Math.abs
 
 
 //var GlobalImageID=
 
 class MainActivity : ComponentActivity() {
 
+    @SuppressLint("CoroutineCreationDuringComposition")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-
+            val locationService:GpsCords=GpsCords()
             val width = this.resources.displayMetrics.widthPixels.toFloat()
             val height = this.resources.displayMetrics.heightPixels.toFloat()
             setContent {
@@ -118,6 +90,16 @@ class MainActivity : ComponentActivity() {
 
                         principal(this)
 
+                        lifecycleScope.launch{
+                            val result = locationService.getUserLocation(this@MainActivity)
+                            if(result != null){
+                                val toast = Toast.makeText(this@MainActivity,"${result.longitude} + ${result.latitude}",
+                                    Toast.LENGTH_LONG )
+                                toast.show()
+
+                            }
+                        }
+
                     }
                 }
             }
@@ -127,6 +109,8 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun principal(context:Context) {
+
+
     val a = JSONReader()
     val buttonColor = remember { mutableStateListOf(Color.White, Color.White, Color.White,Color.White,Color.White) }
     val map=painterResource(id = R.drawable.mapa)
@@ -147,7 +131,7 @@ fun principal(context:Context) {
     val grades by animateFloatAsState(if (visible) 0f else 180f)
    fun CambiarVisibilidad(){
         visible = !visible
-       a.ListaJson(context)
+       //a.ListaJson(context)
     }
     fun CambiarVisibilidadDeMenu(){
         visibleMenu = !visibleMenu
