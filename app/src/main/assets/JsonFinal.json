@@ -1,0 +1,39 @@
+
+{
+  "Edificios": [
+
+    {
+      "nombre": "El viejo",
+      "Numero": 401,
+      "Salones": "Piso 1: Auditorio Juan Bautista Gomez Rodriguez, Auditorio Carlos Alberto Barberi, Salones 106-101*Piso 2: Salones 201-208*Piso 3: Salones de estudio A y B, Salones 301-306*",
+      "descripcion": "El Edificio 401, conocido como El Viejo debido a su construcción entre 1937 y 1944, ha sido el hogar de varias generaciones de ingenieros de la UNAL. Declarado Bien Cultural de Interés en 1995 y nombrado en honor al matemático e ingeniero Julio Garavito Armero, el edificio cuenta con diversos espacios renovados en 2011 gracias a la colaboración de sus egresados. Además de salones, auditorios y zonas de estudio autónomo”"
+
+    },
+    {
+      "nombre": "Postgrado en Materiales",
+      "Numero": 407,
+      "Salones": "Piso 1: Salones 101-102, Sala CAM, mecatrónica y anexo salón, Laboratorios de ensayos mecánicos y deformación plástica, Laboratorios de Fundición y Pulvimetalurgia, Laboratorio tratamiento térmicos* Piso 2: Auditorio Abel Molares, Salon 201 Sala CAD, Secretaria de departamento mecánica y mecatrónica*",
+      "descripcion": "El Edificio 407, conocido como Postgrado en Materiales y Procesos de Manufactura, forma parte de la característica ciudad blanca de la Universidad Nacional y pertenece a la Facultad de Ingeniería. Sus instalaciones albergan varios laboratorios utilizados por la comunidad universitaria, así como puntos de encuentro para los grupos de investigación afiliados a la universidad, contribuyendo así al entorno académico e investigativo de la institución."
+    },
+    {
+      "nombre": "Laboratorios de ingeniería",
+      "Numero": 411,
+      "Salones": "Piso 1: Laboratorio ingeniería agrícola, Laboratorio de automatización, Laboratorio de microprocesadores, Laboratorio electrónica análoga, Laboratorio de alta tensión, Laboratorio de ensayos eléctricos industriales, Laboratorios de electrónica, 104B Laboratorio de instrumentalización, Laboratorio de Máquinas Herramientas, Laboratorio compatibilidad electromagnética, IEEE, Laboratorio de Transmisión de calor, Laboratorio de plantas técnicas y energías renovables, Laboratorio de motores, Laboratorio metalografía, Laboratorio de mecatrónica, Laboratorio diseño de máquinas y prototipado*Piso 2: Sala de Investigación en Tecnologías para la educación y la innovación, Laboratorio de potencia eléctrica*",
+      "descripcion": "El Edificio 411, apodado como Patios por sus estudiantes, constituye el núcleo esencial de los Laboratorios de Ingeniería en la Universidad Nacional de Colombia. Estratégicamente ubicado, este edificio alberga una amplia variedad de instalaciones de vanguardia que respaldan el aprendizaje práctico de los estudiantes y proporcionan una abundancia de recursos para su desarrollo académico."
+    },
+    {
+      "nombre": "Aulas de ingeniería",
+      "Numero": 453,
+      "Salones": "Piso 1: Auditorio A-B, Auditorio Antonio María Gomez M.- Auditorio C, Sala Multimedios, Salones 103-115*Piso 2: Dirección área curricular de ingeniería de sistemas e industrial, Laboratorio de bases de datos y sistemas de información- 203, Laboratorio de ingeniería industrial, Sala de posgrados de sistemas, Salones*Piso 3: Dirección de departamento de ingeniería química y ambiental, Sala L. M. BRONIEWSKI, Salones 303-317*Piso 4: Dirección de departamento ingeniería mecánica y mecatrónica, Salones 403-417*",
+      "descripcion": "El Edificio 453, conocido como Aulas de Ingeniería, destaca como uno de los puntos emblemáticos de la Universidad Nacional de Colombia. Este espacio no solo sirve como centro de actividades para la Facultad de Ingeniería, sino que también acoge diversas iniciativas que involucran a toda la comunidad universitaria. Además de contar con diversos salones y espacios de estudio, el edificio ofrece zonas de descanso, laboratorios y alberga las direcciones curriculares de las carreras pertenecientes a la facultad de ingeniería."
+
+    },
+    {
+      "nombre": "Ciencia y Tecnología ",
+      "Numero": 454,
+      "Salones": "Piso 1: Auditorio Luis Sarmiento Ángulo, Salas de estudio Biblioteca* Piso 2: Biblioteca-colecciones de Matemáticas Física y Estadística , Aulas de estudio y consulta en internet, Salon 201-208*Piso 3: Biblioteca-colecciones de Biología y Química , Aulas de estudio y consulta en internet, Salon 301-308*Piso 4: Biblioteca-colección de Ingeniería, Aulas de estudio y consulta en internet, Salon 401-404*Piso 5: cafetería Canela*",
+      "descripcion": "El Edificio 454, también conocido como CyT o Edificio de Ciencia y Tecnología, fue construido en 2008 gracias al financiamiento del empresario Luis Carlos Sarmiento Angulo. En este edificio, reconocido por su interés arquitectónico y su ambiente moderno, la comunidad universitaria tiene acceso a diversas colecciones en su biblioteca, que abarcan desde química hasta ingeniería. Además, se destacan espacios de estudio equipados con computadoras de fácil acceso para los estudiantes."
+    }
+
+  ]
+}

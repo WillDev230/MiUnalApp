@@ -2,4 +2,8 @@
 <resources>
 
     <style name="Theme.MiUnalApp" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="SplashTheme" parent="Theme.MiUnalApp">
+        <item name="android:windowBackground">@drawable/splashscreen</item>
+    </style>
 </resources>
